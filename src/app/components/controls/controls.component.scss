@@ -1,0 +1,111 @@
+@use "@angular/material" as mat;
+
+.controls-container {
+  // padding-left: 100px;
+  // // width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  // justify-content: space-between;
+  // gap: 10px;
+}
+
+.controls-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls-info {
+  display: flex;
+  width: 100%;
+}
+
+.controls-info > * {
+  flex: 1;
+}
+
+.controls-buttons {
+  margin: 2rem 3rem;
+}
+
+.number-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  height: 100%;
+  gap: 1rem;
+}
+
+.numberButton {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: none;
+  font-size: 4rem;
+}
+
+.controls-buttons > * {
+  box-shadow: none;
+  border-radius: 100%;
+  width: 10rem;
+  height: 10rem;
+
+  .mat-icon {
+    font-size: 5rem;
+    height: 5rem;
+    width: 5rem;
+  }
+}
+
+.idea {
+  position: relative;
+}
+
+.ideaBadge {
+  position: absolute;
+  background-color: var(--mat-sys-secondary);
+  color: var(--mat-sys-background);
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+  top: 0px;
+  left: 0px;
+  transform: translate(0px, -5rem);
+}
+
+.controls-info > * {
+  color: var(--mat-sys-secondary);
+  font-size: 2.5rem;
+}
+
+.eraser {
+  fill: var(--mat-sys-secondary);
+}
+
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scoreBox {
+  align-items: flex-start;
+}
+
+.timeBox {
+  align-items: flex-end;
+}
+
+.newGameButton {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.5vw;
+  font-size: 3rem;
+  // height: 150px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}

@@ -1,0 +1,30 @@
+@use "@angular/material" as mat;
+
+button {
+  @include mat.menu-overrides(
+    (
+      item-label-text-size: 3rem,
+    )
+  );
+}
+
+.mdc-button {
+  min-width: 0px;
+}
+.mat-mdc-button:has(.material-icons, mat-icon, [matButtonIcon]) {
+  padding: 2rem;
+}
+.mat-mdc-button {
+  height: 5rem;
+}
+.difficulty {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+
+.difficultyButton {
+  border-radius: 0.5vw;
+  font-size: 3rem;
+}

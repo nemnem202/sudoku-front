@@ -1,0 +1,21 @@
+<div class="difficulty">
+  <div>Difficulté :</div>
+  <button mat-button [matMenuTriggerFor]="afterMenu" class="difficultyButton">
+    {{ difficultyArray[difficulty] }}
+    <mat-icon iconPositionEnd>expand_more</mat-icon>
+  </button>
+  <mat-menu #afterMenu="matMenu" xPosition="after">
+    <button mat-menu-item (click)="changeDifficulty(0)">
+      {{ difficultyArray[0] }}
+    </button>
+    <button mat-menu-item (click)="changeDifficulty(1)">
+      {{ difficultyArray[1] }}
+    </button>
+    <button mat-menu-item (click)="changeDifficulty(2)">
+      {{ difficultyArray[2] }}
+    </button>
+    <button mat-menu-item (click)="changeDifficulty(3)">
+      {{ difficultyArray[3] }}
+    </button>
+  </mat-menu>
+</div>

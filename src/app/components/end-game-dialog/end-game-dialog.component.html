@@ -1,0 +1,109 @@
+<!-- <h1 mat-dialog-title class="title">Partie finie !</h1> -->
+<mat-dialog-content class="mat-typography dialog">
+  <mat-tab-group>
+    <mat-tab label="Partie finie !">
+      <p class="difficultyContainer">
+        <span class="line">
+          <button mat-button class="gameChip">
+            <mat-icon>grid_on</mat-icon>{{ difficulties[endDifficulty] }}
+          </button>
+          <button mat-button class="gameChip">
+            <mat-icon>category</mat-icon
+            >{{ endKiller ? "Killer" : "Classique" }}
+          </button>
+        </span>
+        <button mat-button class="gameChip">
+          <mat-icon>leaderboard</mat-icon>Score: {{ endScore }}
+        </button>
+        <button mat-button class="gameChip">
+          <mat-icon>close</mat-icon>Erreurs: {{ endErrors }}
+        </button>
+        <button mat-button class="gameChip">
+          <mat-icon>hourglass_empty</mat-icon>Temps: 18:05
+        </button>
+      </p>
+    </mat-tab>
+  </mat-tab-group>
+  <mat-tab-group (selectedTabChange)="setMode($event.index === 1)">
+    <mat-tab label="Classique">
+      <p class="difficultyContainer">
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(0)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Facile
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(1)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Normal
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(2)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Difficile
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(3)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Extreme
+        </button>
+      </p>
+    </mat-tab>
+    <mat-tab label="Killer">
+      <p class="difficultyContainer">
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(0)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Facile
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(1)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Normal
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(2)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Difficile
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(3)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Extreme
+        </button>
+      </p>
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>

@@ -1,0 +1,70 @@
+.gridContainer {
+  display: grid;
+  width: 70rem;
+  height: 70rem;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  // border: 0.5px solid var(--mat-sys-primary);
+  cursor: pointer;
+  position: relative;
+  font-size: 3rem;
+}
+.gridCell {
+  // border: 0.5px solid var(--mat-sys-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.primary {
+  background-color: color-mix(in srgb, var(--mat-sys-primary) 40%, transparent);
+}
+
+.secondary {
+  background-color: color-mix(in srgb, var(--mat-sys-primary) 8%, transparent);
+}
+
+.correct {
+  color: #81d4fa;
+}
+
+.not-correct {
+  color: var(--mat-sys-on-error);
+}
+
+.undefined {
+  color: var(--mat-sys-outline);
+}
+
+.linesCanvas,
+.editGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.editGrid {
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+}
+
+.editCell {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  font-size: 1rem;
+  padding: 2rem;
+  padding-left: 2.5rem;
+  opacity: 0.5;
+}
+
+.highlight {
+  background-color: color-mix(in srgb, var(--mat-sys-primary) 20%, transparent);
+}

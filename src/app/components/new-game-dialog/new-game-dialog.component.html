@@ -1,0 +1,87 @@
+<mat-dialog-content class="mat-typography dialog">
+  <mat-tab-group
+    (selectedTabChange)="setMode($event.index === 1)"
+    [selectedIndex]="modeIndex"
+  >
+    <mat-tab label="Classique">
+      <p class="difficultyContainer">
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(0)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Facile
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(1)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Normal
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(2)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Difficile
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(3)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Extreme
+        </button>
+      </p>
+    </mat-tab>
+    <mat-tab label="Killer">
+      <p class="difficultyContainer">
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(0)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Facile
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(1)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Normal
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(2)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Difficile
+        </button>
+        <button
+          mat-button
+          mat-dialog-close
+          class="difficultyButton"
+          (click)="setDifficulty(3)"
+        >
+          <mat-icon>grid_on</mat-icon>
+          Extreme
+        </button>
+      </p>
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>

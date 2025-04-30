@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+html {
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$orange-palette,
+        theme-type: dark,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+  font-size: clamp(1px, calc(0.4vw + 1px), 30px);
+}
+
+html,
+body {
+  font-family: Roboto;
+  background-color: var(--mat-sys-background);
+  color: var(--mat-sys-on-background);
+  display: flex;
+  justify-content: center;
+}
+
+* {
+  user-select: none;
+}
+
+:root {
+  .mat-mdc-tab-body-content {
+    overflow: hidden !important;
+  }
+  .mat-mdc-dialog-content {
+    max-height: none;
+  }
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,89 @@
+@use "@angular/material" as mat;
+
+.header-wrapper,
+.title-tabs-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-tabs-wrapper {
+  gap: 10px;
+}
+.title {
+  font-size: 5rem;
+}
+
+.profilePicture {
+  width: 5rem;
+  height: 5rem;
+}
+
+.profilePictureButton {
+  width: 5rem;
+  height: 5rem;
+  overflow: hidden;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profilePictureButton:hover {
+  opacity: 0.8;
+}
+
+mat-tab-group {
+  @include mat.tabs-overrides(
+    (
+      label-text-size: 3rem,
+      container-height: 10rem,
+    )
+  );
+  // width: 40rem;
+}
+
+.mat-mdc-tab.mdc-tab {
+  width: 20rem;
+  min-width: 1rem;
+  // max-width: 5rem;
+}
+// .mat-mdc-tab-header {
+//   border: 1px solid red;
+// }
+// .mat-mdc-tab-body.mat-mdc-tab-body-active {
+//   min-height: 48px;
+//   background-color: coral;
+// }
+// .mat-mdc-tab.mdc-tab {
+//   background-color: grey;
+//   &.mdc-tab-indicator--active {
+//     background-color: blue;
+//   }
+// }
+// .mdc-tab-indicator__content--underline {
+//   --mdc-tab-indicator-active-indicator-color: green;
+// }
+// .mdc-tab-indicator
+//   .mdc-tab-indicator__content.mdc-tab-indicator__content--underline {
+//   border-top-width: 4px;
+// }
+
+button {
+  @include mat.menu-overrides(
+    (
+      item-label-text-size: 3rem,
+      divider-bottom-spacing: 0px,
+      divider-top-spacing: 0px,
+    )
+  );
+}
+.mat-mdc-menu-panel {
+  min-width: 0px;
+}
+.mat-mdc-menu-content {
+  padding: 0px;
+}
+.mat-mdc-menu-item {
+  min-height: 5rem;
+}

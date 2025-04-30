@@ -1,0 +1,17 @@
+.main-container {
+  // width: 100%;
+  margin: 5rem auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3rem;
+}
+.difficultyAndScore,
+.gridAndControls {
+  display: flex;
+}
+app-controls,
+app-score {
+  padding-left: 5rem;
+  width: 50rem;
+}

@@ -1,0 +1,19 @@
+<div #gridContainer class="gridContainer">
+  <div
+    *ngFor="let cell of grid"
+    [attr.id]="'cell-' + cell.cell[0] + '-' + cell.cell[1]"
+    [attr.data-column]="cell.cell[0]"
+    [attr.data-row]="cell.cell[1]"
+    [ngClass]="[
+      'gridCell',
+      toColorIn(cell),
+      colorTextForCorrect(cell.correct, cell.isInitial)
+    ]"
+    [style.gridColumn]="cell.cell[0] + 1"
+    [style.gridRow]="cell.cell[1] + 1"
+    (mousedown)="handleGridClick(cell)"
+  >
+    {{ cell.value }}
+  </div>
+  <canvas #canvas class="linesCanvas"></canvas>
+</div>
