@@ -78,7 +78,6 @@ export class GameService {
       this.score.next(response.score);
       this.clearCount();
       this.countFrom(response.time);
-      console.log(response);
       if (response.killerGrid) {
         this.killerGrid.next(response.killerGrid);
       } else {
@@ -104,7 +103,7 @@ export class GameService {
       const status = res.status;
       const response = await res.json();
       if (status === 200 && response.inputs) {
-        this.grid.next(response.inputs);
+        this.grid.next(this.createGridFromInputs(response.inputs));
         this.errors.next(response.errors);
         this.score.next(response.score);
         this.redirect(killer, difficulty, false);
@@ -142,11 +141,15 @@ export class GameService {
   }
 
   changeCellInGrid(cell: CellDto) {
-    const grid = this.grid.getValue();
+    let grid = this.grid.getValue();
 
-    grid?.filter((c) => c.cell[0] != cell.cell[0] || c.cell[1] != cell.cell[1]);
+    if (grid === undefined) return;
 
-    grid?.push(cell);
+    grid = grid.filter(
+      (c) => c.cell[0] != cell.cell[0] || c.cell[1] != cell.cell[1]
+    );
+
+    grid.push(cell);
 
     this.grid.next(grid);
   }
@@ -154,7 +157,7 @@ export class GameService {
   redirect(
     killer: boolean | undefined,
     difficulty: number | undefined,
-    getGame?: boolean
+    getGame: boolean
   ) {
     if (killer !== undefined) {
       localStorage.setItem('Killer', String(killer));
@@ -172,7 +175,7 @@ export class GameService {
     this.appService.killer.next(currentKiller);
     this.appService.difficulty.next(currentDifficulty);
 
-    if (getGame === undefined || getGame === true) {
+    if (getGame === true) {
       this.getGame();
     }
   }

@@ -40,7 +40,7 @@ export class EndGameDialogComponent {
   }
 
   async setDifficulty(diff: number) {
-    this.gameService.redirect(undefined, diff);
+    this.gameService.redirect(undefined, diff, true);
   }
 
   setMode(killer: boolean) {

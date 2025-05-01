@@ -45,6 +45,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.gameService.redirect(undefined, undefined);
+    this.gameService.redirect(undefined, undefined, true);
   }
 }

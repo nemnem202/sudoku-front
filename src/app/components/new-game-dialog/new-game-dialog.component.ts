@@ -33,7 +33,7 @@ export class NewGameDialogComponent {
   }
   async setDifficulty(difficulty: number) {
     await this.gameService.createGame(this.killer, difficulty);
-    this.gameService.redirect(undefined, undefined);
+    this.gameService.redirect(undefined, undefined, false);
   }
 
   setMode(killer: boolean) {

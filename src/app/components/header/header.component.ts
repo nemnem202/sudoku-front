@@ -28,6 +28,6 @@ export class HeaderComponent {
     });
   }
   redirect(bool: boolean) {
-    this.gameService.redirect(bool, undefined);
+    this.gameService.redirect(bool, undefined, true);
   }
 }

@@ -23,6 +23,7 @@ export class DifficultyComponent {
     });
   }
   changeDifficulty(index: number) {
-    this.gameService.redirect(undefined, index);
+    console.log('difficulty changed');
+    this.gameService.redirect(undefined, index, true);
   }
 }
