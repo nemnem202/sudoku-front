@@ -18,7 +18,10 @@ const authConfig: AuthConfig = {
   scope: 'openid profile',
   responseType: 'token id_token',
   showDebugInformation: true,
-  useSilentRefresh: false,
+  useSilentRefresh: true,
+  silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+  timeoutFactor: 0.75,
+  clearHashAfterLogin: true,
 };
 
 @Component({

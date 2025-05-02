@@ -6,6 +6,13 @@ button {
       item-label-text-size: 3rem,
     )
   );
+
+  @include mat.button-overrides(
+    (
+      text-icon-offset: 0px,
+      text-icon-spacing: 0px,
+    )
+  );
 }
 
 .mdc-button {
@@ -17,6 +24,18 @@ button {
 .mat-mdc-button {
   height: 5rem;
 }
+
+.mat-mdc-button > .mat-icon {
+  font-size: 2.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+// .mat-mdc-button .mdc-button__label + .mat-icon {
+//   margin-right: var(--mat-text-button-icon-offset, -4px);
+//   margin-left: 0px;
+// }
+
 .difficulty {
   display: flex;
   align-items: center;

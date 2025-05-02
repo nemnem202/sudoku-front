@@ -1,0 +1,12 @@
+<!-- src/silent-refresh.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      window.addEventListener("load", function () {
+        window.opener?.postMessage(location.href, window.location.origin);
+      });
+    </script>
+  </head>
+  <body></body>
+</html>

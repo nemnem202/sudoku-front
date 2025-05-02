@@ -18,11 +18,12 @@
 .controls-info {
   display: flex;
   width: 100%;
+  justify-content: space-between;
 }
 
-.controls-info > * {
-  flex: 1;
-}
+// .controls-info > * {
+//   flex: 1;
+// }
 
 .controls-buttons {
   margin: 2rem 3rem;
@@ -87,17 +88,9 @@
 
 .info-box {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   align-items: center;
-}
-
-.scoreBox {
-  align-items: flex-start;
-}
-
-.timeBox {
-  align-items: flex-end;
+  width: fit-content;
 }
 
 .newGameButton {

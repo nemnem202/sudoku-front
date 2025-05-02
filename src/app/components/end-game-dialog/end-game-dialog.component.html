@@ -19,7 +19,16 @@
           <mat-icon>close</mat-icon>Erreurs: {{ endErrors }}
         </button>
         <button mat-button class="gameChip">
-          <mat-icon>hourglass_empty</mat-icon>Temps: 18:05
+          <mat-icon>hourglass_empty</mat-icon>
+          <div style="display: flex">
+            <span style="margin-right: 5px">Temps: </span>
+            <span> {{ hours > 0 ? hours + ":" : "" }}</span>
+            <span>{{ minutes < 10 ? 0 : "" }}</span>
+            <span>{{ minutes }}</span>
+            <span>:</span>
+            <span>{{ seconds < 10 ? 0 : "" }}</span>
+            <span>{{ seconds }}</span>
+          </div>
         </button>
       </p>
     </mat-tab>

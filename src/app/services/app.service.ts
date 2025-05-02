@@ -25,6 +25,8 @@ export class AppService {
       if (!this.oauthService.hasValidAccessToken()) {
         await this.oauthService.initLoginFlow();
       } else {
+        console.log('token trouvé');
+        this.oauthService.setupAutomaticSilentRefresh();
         const userProfile = (await this.oauthService.loadUserProfile()) as {
           info: {
             picture?: string;
@@ -32,12 +34,21 @@ export class AppService {
           };
         };
 
+        console.log(await this.oauthService.loadUserProfile());
+
+        this.oauthService.events.subscribe((e) => {
+          if (e.type === 'token_error' || e.type === 'session_terminated') {
+            this.oauthService.initLoginFlow(); // relance la connexion
+          }
+        });
+
         this.userPicture.next(userProfile.info?.picture || '');
         this.userName.next(userProfile.info?.name || '');
         await this.getUserId();
       }
     } catch (error) {
       console.error('Authentication failed', error);
+      await this.oauthService.initLoginFlow();
     }
   }
 
