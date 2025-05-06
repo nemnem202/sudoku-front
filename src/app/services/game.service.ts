@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AppService } from './app.service';
 import { BehaviorSubject } from 'rxjs';
 import { CellDto } from '../models/cellDto';
+import { url } from '../../url';
 
 @Injectable({
   providedIn: 'root',
@@ -11,8 +12,6 @@ export class GameService {
   difficulty: number | undefined = undefined;
   userId: string | undefined = undefined;
   sessionToken: string | undefined = undefined;
-
-  fetchUrl: string = 'http://localhost:3000';
 
   constructor(private appService: AppService) {
     this.appService.killer.subscribe((bool) => {
@@ -42,6 +41,7 @@ export class GameService {
         this.gameFinished.next(true);
       }
     });
+    console.log('fetch url is: ', url);
   }
   selectedCell = new BehaviorSubject<CellDto | undefined>(undefined);
   grid = new BehaviorSubject<Array<CellDto> | undefined>(
@@ -53,6 +53,8 @@ export class GameService {
   score = new BehaviorSubject<number>(0);
   time = new BehaviorSubject<number>(0);
 
+  gameCharging = new BehaviorSubject<boolean>(true);
+
   async getGame(): Promise<void> {
     if (
       this.killer === undefined ||
@@ -61,9 +63,11 @@ export class GameService {
       !this.sessionToken
     )
       return;
+
+    this.gameCharging.next(true);
     try {
       const res = await fetch(
-        `${this.fetchUrl}/game?userId=${this.userId}&difficulty=${this.difficulty}&killer=${this.killer}`,
+        `${url}/game?userId=${this.userId}&difficulty=${this.difficulty}&killer=${this.killer}`,
         {
           method: 'GET',
           headers: {
@@ -83,15 +87,17 @@ export class GameService {
       } else {
         this.killerGrid.next(undefined);
       }
+      this.gameCharging.next(false);
     } catch (err) {
       console.log(err);
     }
   }
 
   async createGame(killer: boolean, difficulty: number): Promise<void> {
+    this.gameCharging.next(true);
     try {
       const res = await fetch(
-        `${this.fetchUrl}/game/create?userId=${this.userId}&difficulty=${difficulty}&killer=${killer}`,
+        `${url}/game/create?userId=${this.userId}&difficulty=${difficulty}&killer=${killer}`,
         {
           method: 'GET',
           headers: {
@@ -110,6 +116,7 @@ export class GameService {
         this.clearCount();
         this.countFrom(response.time);
       }
+      this.gameCharging.next(false);
     } catch (err) {
       console.log(err);
     }
@@ -186,7 +193,7 @@ export class GameService {
     cell.value = value;
     try {
       const res = await fetch(
-        `${this.fetchUrl}/game/cell?userId=${this.userId}&difficulty=${this.difficulty}&killer=${this.killer}`,
+        `${url}/game/cell?userId=${this.userId}&difficulty=${this.difficulty}&killer=${this.killer}`,
         {
           method: 'POST',
           headers: {
@@ -216,7 +223,7 @@ export class GameService {
     if (!cell) return;
     try {
       const res = await fetch(
-        `${this.fetchUrl}/game/idea?userId=${this.userId}&difficulty=${this.difficulty}&killer=${this.killer}`,
+        `${url}/game/idea?userId=${this.userId}&difficulty=${this.difficulty}&killer=${this.killer}`,
         {
           method: 'POST',
           headers: {
@@ -276,7 +283,7 @@ export class GameService {
   async postTime(time: number) {
     try {
       const res = await fetch(
-        `${this.fetchUrl}/game/time?userId=${this.userId}&difficulty=${this.difficulty}&killer=${this.killer}`,
+        `${url}/game/time?userId=${this.userId}&difficulty=${this.difficulty}&killer=${this.killer}`,
         {
           method: 'POST',
           headers: {

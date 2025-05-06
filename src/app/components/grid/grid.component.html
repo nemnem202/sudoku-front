@@ -16,4 +16,5 @@
     {{ cell.value }}
   </div>
   <canvas #canvas class="linesCanvas"></canvas>
+  <div *ngIf="gameCharging" class="charging"><mat-spinner></mat-spinner></div>
 </div>

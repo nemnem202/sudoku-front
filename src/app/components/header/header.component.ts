@@ -11,7 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   gameService = inject(GameService);
   appService = inject(AppService);
   userName: string = 'John Doe';
@@ -19,15 +19,22 @@ export class HeaderComponent {
   modeIndex: number = 0;
   cdr = inject(ChangeDetectorRef);
   constructor() {
-    this.appService.userPicture.subscribe((url) => {
-      console.log('ne user picture', url);
-      this.userPicture = url;
-      this.cdr.detectChanges();
-    });
+    // this.appService.userPicture.subscribe((url) => {
+    //   console.log('ne user picture', url);
+    //   this.userPicture = url;
+    //   this.cdr.detectChanges();
+    // });
     this.appService.killer.subscribe((bool) => {
       if (bool != undefined) {
         this.modeIndex = bool ? 1 : 0;
       }
+    });
+  }
+
+  ngOnInit(): void {
+    this.appService.userPicture.subscribe((url) => {
+      this.userPicture = url;
+      this.cdr.detectChanges();
     });
   }
   redirect(bool: boolean) {

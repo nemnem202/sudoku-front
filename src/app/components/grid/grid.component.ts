@@ -9,14 +9,15 @@ import {
 } from '@angular/core';
 import { AppService } from '../../services/app.service';
 import { GameService } from '../../services/game.service';
-import { NgClass, NgForOf } from '@angular/common';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { CellDto } from '../../models/cellDto';
 import { MatDialog } from '@angular/material/dialog';
 import { EndGameDialogComponent } from '../end-game-dialog/end-game-dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-grid',
-  imports: [NgClass, NgForOf],
+  imports: [NgClass, NgForOf, NgIf, MatProgressSpinnerModule],
   templateUrl: './grid.component.html',
   styleUrl: './grid.component.scss',
 })
@@ -28,6 +29,7 @@ export class GridComponent implements AfterViewInit {
   selectedCell: CellDto | undefined = undefined;
   grid: Array<CellDto> | undefined = undefined;
   killerGrid: Array<any> | undefined = undefined;
+  gameCharging: boolean = true;
 
   constructor() {
     this.gameService.selectedCell.subscribe((cell) => {
@@ -48,6 +50,9 @@ export class GridComponent implements AfterViewInit {
           this.openDialog();
         });
       }
+    });
+    this.gameService.gameCharging.subscribe((bool) => {
+      this.gameCharging = bool;
     });
   }
 

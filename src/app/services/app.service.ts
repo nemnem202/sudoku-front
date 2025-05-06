@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { BehaviorSubject } from 'rxjs';
+import { url } from '../../url';
 
 @Injectable({
   providedIn: 'root',
@@ -55,7 +55,7 @@ export class AppService {
   async getUserId(): Promise<string> {
     const id_token = sessionStorage.getItem('id_token');
     try {
-      const res = await fetch('http://localhost:3000/user/login', {
+      const res = await fetch(`${url}/user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
